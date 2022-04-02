@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import mongoose from "mongoose";
 import User from "../models/User";
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
