@@ -4,7 +4,6 @@ import User from "../models/User";
 import bcrypt from "bcrypt";
 
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
-
     const saltRounds = 10;
 
     const { username, password } = req.body;

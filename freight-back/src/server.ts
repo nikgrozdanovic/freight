@@ -52,7 +52,7 @@ const StartServer = () => {
             const cmp = await bcrypt.compare(req.body.password, user.password);
 
             if(cmp) {
-                res.send("Login successful...");
+                res.send({user});
             } else {
                 res.send("Wrong password...");
             }
