@@ -4,7 +4,7 @@ import { Field, Formik } from "formik";
 import { InputFields } from "../components/fields/InputFields";
 import axios from "axios";
 
-export default () => {
+const Register = () => {
 
     const [registered, setRegistered] = useState(false);
 
@@ -46,3 +46,5 @@ export default () => {
         </Layout>
     )
 }
+
+export default Register
