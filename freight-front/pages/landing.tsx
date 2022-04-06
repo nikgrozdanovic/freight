@@ -1,20 +1,39 @@
 import Layout from "../components/Layout"
 import axios from "axios"
-import { useEffect, useState } from "react"
 import { GetServerSideProps, GetStaticProps, NextPage } from "next"
 import FreightsInterface  from '../interfaces/freights';
-import { Cookies, useCookies } from 'react-cookie';
 import { useRouter } from "next/router";
+import Link from "next/link";
+import { stringify } from "querystring";
 
 type Props = {
     freights: FreightsInterface[],
+    cookie: string
 }
 
-const Freights: NextPage<Props> = ({ freights }) => {
+const Freights: NextPage<Props> = ({ freights, cookie }) => {
+    const user = JSON.parse(cookie); 
+    const router = useRouter();
+    const handleRemoveClick = async (id: string) => {
+        await axios.patch(`http://localhost:3001/freights/delete/${id}`, {user: user.user.username})
+            .then(() => {
+                router.replace(router.asPath)
+            })
+        
+    }
+
     return (
-        <Layout title="Freights page">
+        <Layout title="List of all Freights">
             <div className="container">
                 <div className="col-md-8 offset-md-2">
+                    <div className="row">
+                       <div className="col-md-10"><h1>List of freights</h1></div>
+                       <div className="col-md-2 float-end">
+                           <Link href={`/freights`}>
+                               <button className="btn btn-success">Add</button>
+                           </Link>
+                       </div>
+                    </div>
                     <table className="table">
                         <thead className="thead-dark">
                             <tr>
@@ -24,6 +43,7 @@ const Freights: NextPage<Props> = ({ freights }) => {
                             <th scope="col">Destination</th>
                             <th scope="col">Owner's number</th>
                             <th scope="col">Owner's e-mail</th>
+                            <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,6 +56,11 @@ const Freights: NextPage<Props> = ({ freights }) => {
                                         <td>{freight.destination}</td>
                                         <td>{freight.owner_number}</td>
                                         <td>{freight.owner_email}</td>
+                                        <td>
+                                            <button type="submit" className="btn btn-danger" onClick={() => handleRemoveClick(freight._id)}>
+                                                <i className="bi bi-trash"></i>
+                                            </button>
+                                        </td>
                                     </tr>
                                 )
                         })}
@@ -49,7 +74,7 @@ const Freights: NextPage<Props> = ({ freights }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const cookie = context.req.cookies.logged ? context.req.cookies.logged : null;
-   
+
     if(!cookie) {
         return {
             redirect: {

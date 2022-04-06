@@ -5,6 +5,7 @@ import userRoutes from './routes/User';
 import freightRoutes from './routes/Freight';
 import bcrypt from 'bcrypt';
 import User from './models/User';
+import removedFreightRouter from './routes/RemovedFreight'
 
 const app = express();
 const dbURI = 'mongodb+srv://everyone:newone23@cluster0.gwytp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
@@ -44,6 +45,7 @@ const StartServer = () => {
     /**Routes */
     app.use('/users', userRoutes);
     app.use('/freights', freightRoutes);
+    app.use('/removed', removedFreightRouter);
 
     app.post('/login', async (req, res) => {
         const user = await User.findOne({username: req.body.username});
