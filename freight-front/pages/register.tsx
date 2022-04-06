@@ -25,11 +25,11 @@ const Register = () => {
             }}>
                 {({handleSubmit}) => 
                     <div  className="col-md-4 offset-md-4">
-                        {registered ? <div className="alert alert-success" role="alert">User successfully registered!</div> : <div></div>}
+                        {registered ? <div className="alert alert-success" role="alert">User successfully registered! <a href="/">Go to login page.</a></div> : <div></div>}
                         <form onSubmit={handleSubmit}>
                             <div className="form-outline mb-4">
                                 <label className="form-label">Username</label>
-                                <Field name="username" component={InputFields}/>
+                                <Field type="email" name="username" component={InputFields}/>
                             </div>
                         
                             <div className="form-outline mb-4">

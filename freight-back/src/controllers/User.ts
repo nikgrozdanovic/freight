@@ -18,7 +18,7 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 
     return user
         .save()
-        .then(user => res.status(201).json({ user }))
+        .then(user => res.status(200).json({ user }))
         .catch(err => res.status(500).json({ err }))
 }
 

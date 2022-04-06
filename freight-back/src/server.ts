@@ -54,12 +54,12 @@ const StartServer = () => {
             const cmp = await bcrypt.compare(req.body.password, user.password);
 
             if(cmp) {
-                res.send({user});
+                res.status(200).json({ user });
             } else {
-                res.send("Wrong password...");
+                res.status(403).json({message: "Wrong password..."});
             }
         } else {
-            res.send("User does not exist. Please register to proceed...")
+            res.status(404).json({message:"User does not exist. Please register to proceed..."})
         }
     })
 
