@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from "express";
-import mongoose from "mongoose";
 import RemovedFreights from "../models/RemovedFreight";
 
 const getRemovedFreight = (req: Request, res: Response, next: NextFunction) => {

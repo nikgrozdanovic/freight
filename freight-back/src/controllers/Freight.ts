@@ -53,7 +53,7 @@ const updateFreight = (req: Request, res: Response, next: NextFunction): Object 
 
                     return freight
                     .save()
-                    .then(freight => res.status(201).json({freight}))
+                    .then(freight => res.status(200).json({freight}))
                     .catch(err => res.status(500).json({err}))
                 } else {
                     res.status(404).json({message: 'Freight not found.'});

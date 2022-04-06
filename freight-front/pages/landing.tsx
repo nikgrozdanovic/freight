@@ -1,10 +1,9 @@
 import Layout from "../components/Layout"
 import axios from "axios"
-import { GetServerSideProps, GetStaticProps, NextPage } from "next"
+import { GetServerSideProps, NextPage } from "next"
 import FreightsInterface  from '../interfaces/freights';
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { stringify } from "querystring";
 
 type Props = {
     freights: FreightsInterface[],
