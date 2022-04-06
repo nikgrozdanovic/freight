@@ -4,11 +4,16 @@ import axios from "axios";
 import { Field } from "formik";
 import { InputFields } from "../components/fields/InputFields";
 import { useRouter } from "next/router";
+import { GetServerSideProps, NextPage } from "next";
 
-const AddFreight = () => {
+type Props = {
+    cookie: string
+}
+
+const AddFreight: NextPage<Props> = ({ cookie }) => {
     const router = useRouter();
     return (
-        <Layout title="Add new freights">
+        <Layout title="Add new freights" cookie={cookie}>
             <div className="container">
                 <div className="row">
                     <h1>Add new freight</h1>
@@ -73,6 +78,24 @@ const AddFreight = () => {
             </div>
         </Layout>
     )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const cookie = context.req.cookies.logged ? context.req.cookies.logged : null;
+
+    if(!cookie) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            }
+        }
+    }
+    return {
+        props: {
+            cookie: cookie
+        }
+    }
 }
 
 export default AddFreight

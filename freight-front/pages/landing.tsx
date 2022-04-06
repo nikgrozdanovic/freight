@@ -22,14 +22,14 @@ const Freights: NextPage<Props> = ({ freights, cookie }) => {
     }
 
     return (
-        <Layout title="List of all Freights">
+        <Layout title="List of all Freights" cookie={cookie}>
             <div className="container">
                 <div className="col-md-8 offset-md-2">
                     <div className="row">
                        <div className="col-md-10"><h1>List of freights</h1></div>
-                       <div className="col-md-2 float-end">
+                       <div className="col-md-2">
                            <Link href={`/freights`}>
-                               <button className="btn btn-success">Add</button>
+                               <button className="btn btn-primary"  style={{marginTop: '10px'}}>New</button>
                            </Link>
                        </div>
                     </div>

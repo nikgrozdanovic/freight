@@ -6,13 +6,14 @@ import Removed  from '../interfaces/removed';
 import Link from "next/link";
 
 type Props = {
-    removed: Removed[]
+    removed: Removed[],
+    cookie: string
 }
 
-const Removed: NextPage<Props> = ({ removed }) => {
+const Removed: NextPage<Props> = ({ removed, cookie }) => {
 
     return (
-        <Layout title="List of all removed Freights">
+        <Layout title="List of all removed Freights" cookie={cookie}>
             <div className="container">
                 <div className="col-md-8 offset-md-2">
                     <div className="row">
@@ -67,6 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     return {
         props: {
             removed: data,
+            cookie: cookie
         }
     }
   }

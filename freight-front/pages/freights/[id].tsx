@@ -8,12 +8,13 @@ import { InputFields } from "../../components/fields/InputFields";
 
 type Props = {
     freight: FreightsInterface,
+    cookie: string,
 }
 
-const Freights: NextPage<Props> = ({ freight }) => {
+const Freights: NextPage<Props> = ({ freight, cookie }) => {
     const router = useRouter();
     return (
-        <Layout title="Freights page">
+        <Layout title="Freights page" cookie={cookie}>
             <div className="container">
                 <div className="row">
                     <h1>Edit {freight.name}</h1>
