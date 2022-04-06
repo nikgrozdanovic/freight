@@ -25,7 +25,7 @@ const Register = () => {
             }}>
                 {({handleSubmit}) => 
                     <div  className="col-md-4 offset-md-4">
-                        {registered ? <div className="alert alert-success" role="alert">User successfully registered! <a href="/">Go to login page.</a></div> : <div></div>}
+                        {registered ? <div className="alert alert-success" style={{marginTop: '10px'}} role="alert">User successfully registered! <a href="/">Go to login page.</a></div> : <div></div>}
                         <form onSubmit={handleSubmit}>
                             <div className="form-outline mb-4">
                                 <label className="form-label">Username</label>

@@ -41,7 +41,7 @@ const Home: NextPage = () => {
               {({handleSubmit}) => 
                 <div className="container">
                     <div  className="col-md-4 offset-md-4">
-                    {wrongPwd != '' ? <div className="alert alert-danger" role="alert">{wrongPwd}</div> : <div></div>}
+                    {wrongPwd != '' ? <div className="alert alert-danger" role="alert" style={{marginTop: '10px'}}>{wrongPwd}</div> : <div></div>}
                         <form onSubmit={handleSubmit}>
                             <div className="form-outline mb-4">
                                 <label className="form-label">Username</label>

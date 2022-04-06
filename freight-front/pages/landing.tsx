@@ -29,7 +29,7 @@ const Freights: NextPage<Props> = ({ freights, cookie }) => {
                        <div className="col-md-10"><h1>List of freights</h1></div>
                        <div className="col-md-2">
                            <Link href={`/freights`}>
-                               <button className="btn btn-primary"  style={{marginTop: '10px'}}>New</button>
+                               <button className="btn btn-primary" style={{marginTop: '10px'}}>New</button>
                            </Link>
                        </div>
                     </div>
