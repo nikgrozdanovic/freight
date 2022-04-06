@@ -4,7 +4,7 @@ import Head from 'next/head'
 
 type Props = {
   title?: string,
-  cookie: string,
+  cookie?: string,
 }
 
 const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the default title', cookie }) => (
@@ -16,7 +16,7 @@ const Layout: React.FunctionComponent<Props> = ({ children, title = 'This is the
     </Head>
     <header>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand" href="/">
               <h2>
                 Freights
               </h2>
